@@ -1,4 +1,10 @@
-/* Map Class Coded by Logan Black */
+/*
+Coded By Logan Black.
+This is a hash map implementation designed to store and access passwords with O(1) time complexity.
+This is much more efficient than the heap implementation, which has an O(n) time complexity when searching.
+Two maps are created: one that can access frequencies via a password
+                      and one that can access passwords via a frequency
+*/
 
 #pragma once
 #include <string>

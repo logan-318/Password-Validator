@@ -9,7 +9,7 @@ void Map::insert(const string& password, const int frequency) {
 // O(1) time
 string Map::findPassword(const int frequency) {
     // Checks if frequency exists in hash map
-    if (frequencies.contains(frequency)) {
+    if (frequencies.find(frequency) != frequencies.end()) {
         return frequencies[frequency];
     }
     // Returns empty string if no password has that frequency
@@ -18,6 +18,6 @@ string Map::findPassword(const int frequency) {
 
 // O(1) time
 bool Map::exists(const string &password) const {
-    if (passwords.contains(password)) return true;
+    if (passwords.find(password) != passwords.end()) return true;
     return false;
 }
