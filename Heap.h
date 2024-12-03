@@ -6,7 +6,7 @@
  Since rockyou.txt is sorted by password frequency, passwords should be inserted into the heap starting from the top of rockyou.txt to the bottom.
  Each inserted password is given an increasing priority number.
  When searching for a password, this implementation searches the most used passwords first
-*
+ This is an awful algorithm to use for this kind of dataset since heaps are best for inserting and extracting top/bottom value quickly. searching the heap for a password takes O(n)
 */
 
 #include <iostream>
@@ -19,6 +19,7 @@ public:
     std::string password; //password string
     int priority;         //The position in the file (smaller number = higher frequency)
     HeapNode(const std::string& pwd, int prio) : password(pwd), priority(prio) {}
+    HeapNode() : priority(0) {}
 };
 
 //Heap class for managing heap nodes
