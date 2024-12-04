@@ -38,11 +38,28 @@ int main()
         Map map;
         MinHeap heap;
         int frequency = 1;
+        auto start = chrono::high_resolution_clock::now();
+
         for (const auto& password : passwords) {
             map.insert(password, frequency);
+            frequency += 1;
+        }
+        auto end = chrono::high_resolution_clock::now();
+        auto map_in_duration = chrono::duration_cast<chrono::microseconds>(end - start);
+
+        frequency = 1;
+        start = chrono::high_resolution_clock::now();
+        for (const auto& password : passwords) {
             heap.insert(password, frequency);
             frequency += 1;
         }
+        end = chrono::high_resolution_clock::now();
+        auto heap_in_duration = chrono::duration_cast<chrono::microseconds>(end - start);
+
+        cout << "Map Insert  Duration: " << map_in_duration.count() << " microseconds" << endl;
+        cout << "Heap Insert Duration: " << heap_in_duration.count() << " microseconds" << endl;
+        cout << border << endl;
+
         while (true) {
             string menu_option;
             cout << "Select an option: \n1. Search for password\n2. Return password by frequency\n3. End Program" << endl;
@@ -61,9 +78,9 @@ int main()
                 bool heap_found = false;
 
                 // Find password on map
-                auto start = chrono::high_resolution_clock::now();
+                start = chrono::high_resolution_clock::now();
                 if (map.exists(pswrd)) map_found = true;
-                auto end = chrono::high_resolution_clock::now();
+                end = chrono::high_resolution_clock::now();
                 auto map_duration = chrono::duration_cast<chrono::microseconds>(end - start);
 
                 // Find password on heap
